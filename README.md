@@ -1,2 +1,2 @@
-# ledstrip
-Controller for LEDStrip
+# SDK
+SDK to supply infrastructure classes to services

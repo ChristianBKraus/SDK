@@ -1,4 +1,4 @@
-package jupiterpa.template;
+package jupiterpa;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import jupiterpa.template.infrastructure.config.ApplicationConfig;
+import jupiterpa.infrastructure.config.ApplicationConfig;
 
 @EnableCircuitBreaker
 @EnableScheduling
