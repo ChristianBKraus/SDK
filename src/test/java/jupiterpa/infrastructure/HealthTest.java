@@ -1,3 +1,4 @@
+package jupiterpa.infrastructure;
 //package jupiterpa.template;
 //
 //import static org.hamcrest.MatcherAssert.assertThat;

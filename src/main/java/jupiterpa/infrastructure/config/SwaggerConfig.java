@@ -20,7 +20,7 @@ public class SwaggerConfig {
 	
     @Bean
     public Docket productApi() {
-    	String basePackage = "jupiterpa." + appl.getName() + ".intf.controller";
+    	String basePackage = "jupiterpa." + appl.getName() + ".ext.controller";
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(basePackage))
