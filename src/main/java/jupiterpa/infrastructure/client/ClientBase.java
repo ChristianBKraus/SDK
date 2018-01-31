@@ -27,12 +27,21 @@ public class ClientBase<Entity> {
 	
 	protected final RestTemplate template = new RestTemplate();
 	
+	protected ResponseEntity<Entity> _exchange(URI uri, HttpEntity<String> request, Class<Entity> classType) {
+		return template.exchange(uri,HttpMethod.GET,request,classType);
+	}
+	protected void _put(URI uri, HttpEntity<Entity> request) {
+		template.put(uri, request);
+	}
+	protected Entity _postForObject(URI uri, HttpEntity<Entity> request, Class<Entity> classType) {
+		return (Entity) template.postForObject(uri,request,classType);
+	}
+	
 	protected Entity get(String clientName, String path, Class<Entity> classType) {
 		HttpEntity<String> request = new HttpEntity<String>(getHeaders());
 		URI uri = getUri(clientName,path);
 		
-		ResponseEntity<Entity> response =  
-			template.exchange(uri, HttpMethod.GET, request, classType);
+		ResponseEntity<Entity> response = _exchange(uri,request,classType);
 		if ( response == null )
 			return null;
 		return response.getBody(); 
@@ -45,18 +54,17 @@ public class ClientBase<Entity> {
 		
 		// Request
 		HttpEntity<Entity> request = new HttpEntity<>(entity,headers);
-		template.put(uri, request);		
+		_put(uri, request);		
 	}
 	
-	@SuppressWarnings("unchecked")
-	protected Entity post(String clientName, String path, Entity entity) {
+	protected Entity post(String clientName, String path, Entity entity, Class<Entity> classType) {
 		HttpHeaders headers = getHeaders();		
 		URI uri = getUri(clientName,path);
 		if (headers == null || uri == null) return null;
 		
 		// Request
 		HttpEntity<Entity> request = new HttpEntity<>(entity,headers);
-		return (Entity) template.postForObject(uri, request, entity.getClass());
+		return _postForObject(uri, request, classType);
 	}
 	
 	private ClientConfigEntry getClient(String clientName) {
