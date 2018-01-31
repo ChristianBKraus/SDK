@@ -25,7 +25,7 @@ public class ControllerAOP
     private static final Marker TECHNICAL = MarkerFactory.getMarker("TECHNICAL");
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Around("execution(* jupiterpa.*.ext.controller.*.*(..))")
+	@Around("execution(* jupiterpa.*.intf.controller.*.*(..))")
 	public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
 
         MDC.put("endpoint", joinPoint.getSignature().toString() );
