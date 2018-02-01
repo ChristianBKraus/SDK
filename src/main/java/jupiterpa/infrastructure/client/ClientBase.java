@@ -59,6 +59,10 @@ public class ClientBase<Entity> {
 		return (Entity) template.postForObject(uri, request, entity.getClass());
 	}
 	
+	protected void warn(String message) {
+		logger.warn(TECHNICAL,message);
+	}
+	
 	private ClientConfigEntry getClient(String clientName) {
 		ClientConfigEntry found_entry = null;
 

@@ -4,7 +4,7 @@
 	
 	<groupId>jupiterpa</groupId>
 	<artifactId>SDK</artifactId>
-	<version>0.9.5-SNAPSHOT</version>
+	<version>1.0.0-RELEASE</version>
 
 	<parent>
 		<!-- Your own application should inherit from spring-boot-starter-parent -->
@@ -62,13 +62,11 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.7.0</version>
-			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
-			<scope>compile</scope>
 		</dependency>
             
     </dependencies>
