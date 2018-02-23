@@ -4,6 +4,10 @@ package jupiterpa.infrastructure.actuator;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
@@ -12,6 +16,8 @@ import static org.springframework.boot.actuate.health.Health.*;
 
 @Component
 public class HealthCheck implements HealthIndicator, InterfaceHealth {
+    private static final Marker TECHNICAL = MarkerFactory.getMarker("TECHNICAL");
+	private static final Logger logger = LoggerFactory.getLogger(new HealthCheck().getClass());
 	
 	Map<String,HealthInfo> health = new HashMap<String,HealthInfo>();
   
@@ -40,6 +46,7 @@ public class HealthCheck implements HealthIndicator, InterfaceHealth {
     } 
 	@Override
 	public void setHealth(HealthInfo info) {
+		logger.info(TECHNICAL, "Health of {} set to {}",info.getName(), info.getMessage());
 		health.put(info.getName(),info);
 	}
 }
